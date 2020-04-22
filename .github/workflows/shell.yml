@@ -8,19 +8,18 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
       with:
-        submodule: recursive
+        submodules: recursive
 
     - name: Shell Runner Build sublime-package
       run: |
         bash ./build.sh
 
     - name: Upload sublime-package
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v2-preview
       with:
-        name: Rego.sublime-package
-        path: ./dist
+        path: ./dist/Rego.sublime-package
